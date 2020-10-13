@@ -15,6 +15,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.google.android.material.tabs.TabLayout;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +36,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initTabLayout();
-        setTabOnClickListner();
+        setTabOnClickListener();
 
     }
 
-    private void setTabOnClickListner() {
+    private void setTabOnClickListener() {
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -121,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @NotNull
     private View getTabView(int position) {
         View view = LayoutInflater.from(getBaseContext()).inflate(R.layout.tablayout_item,null);
         ImageView imageView = view.findViewById(R.id.tabItemImage);

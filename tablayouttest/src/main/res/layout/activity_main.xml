@@ -16,7 +16,10 @@
         android:id="@+id/main_tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabGravity="center"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:tabIndicatorHeight="2dp"
+        app:tabIndicator="@drawable/tab_layout_indicator"/>
 
 </LinearLayout>
