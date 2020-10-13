@@ -1,0 +1,4 @@
+include ':test'
+include ':tablayouttest'
+include ':app'
+rootProject.name = "PinPractice"

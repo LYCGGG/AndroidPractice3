@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PinPractice</string>
+    <string name="input_pin_test">Input Pin Test</string>
+</resources>
