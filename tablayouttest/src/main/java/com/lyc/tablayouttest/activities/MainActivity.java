@@ -28,13 +28,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private MyTabLayout tabLayout;
     private MyViewPager viewPager;
-    private List<Fragment> list = new ArrayList<>();
+    private final List<Fragment> list = new ArrayList<>();
     private String[] tabTitles;
     private int[] tabImagesId;
-    private ContactFragment contactFragment1 = new ContactFragment();
-    private ContactFragment contactFragment2 = new ContactFragment();
-
-
+    private ContactFragment contactFragment1;
+    private ContactFragment contactFragment2;
 
     private Fragment mContent;
 
@@ -53,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
 //                更换样式
                 setTabStyleWithSelect(tab);
-//
 //                int position = tab.getPosition();
                 viewPagerShow(tab.getPosition());
             }
@@ -79,29 +76,30 @@ public class MainActivity extends AppCompatActivity {
      * @Author: "LYCGGG"
      * @Description: 初始化TabLayout,ViewPager,tab样式等
      * @Param: * @param
-     * @return: void
+     * @Return: void
      * @Date: 2020/10/9
      */
     private void initTabLayout() {
         tabLayout = findViewById(R.id.main_tab_layout);
         viewPager = findViewById(R.id.main_view_pager);
+        contactFragment1 = new ContactFragment();
+        contactFragment2 = new ContactFragment();
 
         tabTitles = new String[]{getString(R.string.contacts),getString(R.string.favorites)};
         tabImagesId = new int[]{R.drawable.ic_tab_contacts,R.drawable.ic_tab_favorite};
         list.add(contactFragment1);
         list.add(contactFragment2);
-//        list.add(fragmentTest1);
-//        list.add(fragmentTest2);
 
         tabLayout.setupWithViewPager(viewPager);
         MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, list);
         viewPager.setAdapter(myFragmentPagerAdapter);
 
-        //为tabLayout的每个tab设置样式(目前只设置文本)
+        //为tabLayout的每个tab设置样式
         for(int i=0;i<tabLayout.getTabCount();i++){
 //            设置样式
             TabLayout.Tab tab = tabLayout.getTabAt(i);
+            assert tab != null;
             tab.setCustomView(getTabView(i));
 //            tabLayout.getTabAt(i).setCustomView(getTabView(i));
             if (i == 0) {
@@ -118,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setTabStyleWithSelect(TabLayout.Tab tab) {
         View view = tab.getCustomView();
+        assert view != null;
         TextView textView = view.findViewById(R.id.tabItemText);
 //        LogUtil.d(textView.getText().toString() + tab.isSelected());
         if (tab.isSelected()) {
@@ -137,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
     private View getTabView(int position) {
         View view = LayoutInflater.from(getBaseContext()).inflate(R.layout.tablayout_item,null);
         ImageView imageView = view.findViewById(R.id.tabItemImage);
+        imageView.setContentDescription(tabTitles[position]);
         TextView textView = view.findViewById(R.id.tabItemText);
         textView.setText(tabTitles[position]);
         imageView.setImageDrawable(getDrawable(tabImagesId[position]));

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
-    android:gravity="center">
+    android:gravity="center"
+    tools:ignore="UseCompoundDrawables">
 
     <ImageView
         android:id="@+id/tabItemImage"
@@ -13,7 +15,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="5dp"
         android:layout_gravity="center"
-        app:srcCompat="@drawable/ic_tab_contacts" />
+        app:srcCompat="@drawable/ic_tab_contacts"
+        android:contentDescription="@string/contacts" />
 
     <TextView
         android:id="@+id/tabItemText"
