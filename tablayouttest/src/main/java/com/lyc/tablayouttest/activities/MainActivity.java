@@ -1,5 +1,6 @@
-package com.lyc.tablayouttest;
+package com.lyc.tablayouttest.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.google.android.material.tabs.TabLayout;
+import com.lyc.tablayouttest.Fragment.ContactFragment;
+import com.lyc.tablayouttest.MyTabLayout;
+import com.lyc.tablayouttest.MyViewPager;
+import com.lyc.tablayouttest.R;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -26,8 +31,10 @@ public class MainActivity extends AppCompatActivity {
     private List<Fragment> list = new ArrayList<>();
     private String[] tabTitles;
     private int[] tabImagesId;
-    private FragmentTest1 fragmentTest1 = new FragmentTest1();
-    private FragmentTest2 fragmentTest2 = new FragmentTest2();
+    private ContactFragment contactFragment1 = new ContactFragment();
+    private ContactFragment contactFragment2 = new ContactFragment();
+
+
 
     private Fragment mContent;
 
@@ -81,12 +88,14 @@ public class MainActivity extends AppCompatActivity {
 
         tabTitles = new String[]{getString(R.string.contacts),getString(R.string.favorites)};
         tabImagesId = new int[]{R.drawable.ic_tab_contacts,R.drawable.ic_tab_favorite};
-        list.add(fragmentTest1);
-        list.add(fragmentTest2);
+        list.add(contactFragment1);
+        list.add(contactFragment2);
+//        list.add(fragmentTest1);
+//        list.add(fragmentTest2);
 
         tabLayout.setupWithViewPager(viewPager);
         MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(),
-                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,list);
+                FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, list);
         viewPager.setAdapter(myFragmentPagerAdapter);
 
         //为tabLayout的每个tab设置样式(目前只设置文本)
@@ -123,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @NotNull
     private View getTabView(int position) {
         View view = LayoutInflater.from(getBaseContext()).inflate(R.layout.tablayout_item,null);
@@ -140,9 +150,9 @@ public class MainActivity extends AppCompatActivity {
      * @Date: 2020/10/9
      * 根据Android开发文档，此类已经被弃用，建议替换成FragmentStateAdapter
      */
-    private class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+    private static class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
-        private List<Fragment> list;
+        private final List<Fragment> list;
 
         public MyFragmentPagerAdapter(@NonNull FragmentManager fm, int behavior, List<Fragment> list) {
             super(fm, behavior);
