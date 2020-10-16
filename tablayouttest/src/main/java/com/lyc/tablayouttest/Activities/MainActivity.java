@@ -1,4 +1,4 @@
-package com.lyc.tablayouttest.activities;
+package com.lyc.tablayouttest.Activities;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

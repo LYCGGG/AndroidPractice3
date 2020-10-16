@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,9 +14,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.lyc.tablayouttest.Adapter.MyContactsAdapter;
 import com.lyc.tablayouttest.Contacts.MyContacts;
+import com.lyc.tablayouttest.ItemClickSupport;
 import com.lyc.tablayouttest.R;
-import com.lyc.tablayouttest.adapter.MyContactsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +67,15 @@ public class ContactFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                TODO:点击添加新联系人
+            }
+        });
+
+        ItemClickSupport.addTo(mRecycleView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                // 测试成功
+                Toast.makeText(getContext(),"s"+position,Toast.LENGTH_LONG).show();
+
             }
         });
     }

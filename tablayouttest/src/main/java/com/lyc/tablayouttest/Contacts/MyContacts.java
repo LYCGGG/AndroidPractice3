@@ -9,8 +9,8 @@ package com.lyc.tablayouttest.Contacts;
 public class MyContacts {
     private int userId;
     private String userName;
-    private String userPhone[];
-    private String userEmail[];
+    private String[] userPhone;
+    private String[] userEmail;
 
     public MyContacts(int userId, String userName, String[] userPhone, String[] userEmail) {
         this.userId = userId;

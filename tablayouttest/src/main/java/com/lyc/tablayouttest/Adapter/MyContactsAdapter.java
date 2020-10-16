@@ -1,4 +1,4 @@
-package com.lyc.tablayouttest.adapter;
+package com.lyc.tablayouttest.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -50,6 +50,12 @@ public class MyContactsAdapter extends RecyclerView.Adapter<MyContactsAdapter.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         MyContacts myContacts = myContactsList.get(position);
         holder.textView.setText(myContacts.getUserName());
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                JumpToModifyContactActivity()
+//            }
+//        });
     }
 
     @Override
