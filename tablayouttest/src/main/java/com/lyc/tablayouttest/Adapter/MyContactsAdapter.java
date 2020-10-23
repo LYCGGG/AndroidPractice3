@@ -65,13 +65,6 @@ public class MyContactsAdapter extends RecyclerView.Adapter<MyContactsAdapter.My
             super(itemView);
             cardView = (CardView) itemView;
             textView = itemView.findViewById(R.id.contact_name);
-//            textView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(itemView.getContext(),"ok"+getLayoutPosition(),Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//            textView = itemView.findViewById(R.id.contact_name);
         }
 
 
