@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -33,6 +32,14 @@ public class MyContactsAdapter extends RecyclerView.Adapter<MyContactsAdapter.My
 //        myContactsList.
 //    }
 
+    private OnItemClickListener mOnItemClickListener;
+    public interface OnItemClickListener {
+        void onButtonClicked(View view, int position, String input_str);
+    }
+    public void setOnItemClickListener(OnItemClickListener clickListener) {
+        this.mOnItemClickListener = clickListener;
+    }
+
     public MyContactsAdapter(Context context, List<MyContacts> myContactsList) {
         super();
         this.context = context;
@@ -48,7 +55,7 @@ public class MyContactsAdapter extends RecyclerView.Adapter<MyContactsAdapter.My
         }
 
         View view = LayoutInflater.from(context).inflate(R.layout.contact_item,parent,false);
-        return new MyViewHolder(view);
+        return new MyViewHolder(view,mOnItemClickListener);
     }
 
 
@@ -77,20 +84,33 @@ public class MyContactsAdapter extends RecyclerView.Adapter<MyContactsAdapter.My
         private CardView cardView;
         private TextView textView;
 
-        public MyViewHolder(@NonNull final View itemView) {
+        public MyViewHolder(@NonNull final View itemView,final OnItemClickListener onClickListener) {
             super(itemView);
             cardView = (CardView) itemView;
             textView = itemView.findViewById(R.id.contact_name);
+//            textView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Toast.makeText(itemView.getContext(),"ok"+getLayoutPosition(),Toast.LENGTH_SHORT).show();
+//                }
+//            });
+//            textView = itemView.findViewById(R.id.contact_name);
             textView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(),"ok"+getLayoutPosition(),Toast.LENGTH_SHORT).show();
+                    if (onClickListener != null) {
+                        int position = getAdapterPosition();
+                        //确保position值有效
+                        if (position != RecyclerView.NO_POSITION) {
+                            onClickListener.onButtonClicked(itemView,position,"111");
+                        }
+                    }
                 }
             });
-//            textView = itemView.findViewById(R.id.contact_name);
         }
 
 
-        
+
+
     }
 }

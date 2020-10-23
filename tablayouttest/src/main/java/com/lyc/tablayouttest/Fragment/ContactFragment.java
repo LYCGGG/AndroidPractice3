@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.lyc.tablayouttest.Adapter.MyContactsAdapter;
 import com.lyc.tablayouttest.Contacts.MyContacts;
-import com.lyc.tablayouttest.ItemClickSupport;
 import com.lyc.tablayouttest.R;
 
 import java.util.ArrayList;
@@ -70,11 +69,19 @@ public class ContactFragment extends Fragment {
             }
         });
 
-        ItemClickSupport.addTo(mRecycleView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+//        ItemClickSupport.addTo(mRecycleView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+//            @Override
+//            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+//                // 测试成功
+//                Toast.makeText(getContext(),"s"+position,Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
+
+        myContactsAdapter.setOnItemClickListener(new MyContactsAdapter.OnItemClickListener() {
             @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                // 测试成功
-                Toast.makeText(getContext(),"s"+position,Toast.LENGTH_LONG).show();
+            public void onButtonClicked(View view, int position, String input_str) {
+                Toast.makeText(getContext(),"what" + input_str,Toast.LENGTH_SHORT).show();
 
             }
         });
