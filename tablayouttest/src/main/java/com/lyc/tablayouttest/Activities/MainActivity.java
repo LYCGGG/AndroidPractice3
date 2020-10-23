@@ -16,8 +16,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.google.android.material.tabs.TabLayout;
 import com.lyc.tablayouttest.Fragment.ContactFragment;
-import com.lyc.tablayouttest.MyTabLayout;
-import com.lyc.tablayouttest.MyViewPager;
+import com.lyc.tablayouttest.Ui.MyTabLayout;
+import com.lyc.tablayouttest.Ui.MyViewPager;
 import com.lyc.tablayouttest.R;
 
 import org.jetbrains.annotations.NotNull;

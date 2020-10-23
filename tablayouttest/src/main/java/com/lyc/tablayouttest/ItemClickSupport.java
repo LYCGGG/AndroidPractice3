@@ -4,6 +4,8 @@ import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * @author ：LYC
  * @date ：Created in 2020/10/16
@@ -57,8 +59,9 @@ public class ItemClickSupport {
         mRecyclerView.addOnChildAttachStateChangeListener(mAttachListener);
     }
 
+    @NotNull
     public static ItemClickSupport addTo(RecyclerView view) {
-        ItemClickSupport support = (ItemClickSupport) view.getTag(R.id.contact_name);
+        ItemClickSupport support = (ItemClickSupport) view.getTag(R.id.item_click_support);
         if (support == null) {
             support = new ItemClickSupport(view);
         }
