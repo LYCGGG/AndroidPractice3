@@ -11,7 +11,6 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lyc.tablayouttest.Contacts.MyContacts;
-import com.lyc.tablayouttest.LogUtil.LogUtil;
 import com.lyc.tablayouttest.R;
 
 import java.util.List;
@@ -28,10 +27,6 @@ public class MyContactsAdapter extends RecyclerView.Adapter<MyContactsAdapter.My
     private int count = 0;
     private int count1 = 0;
 
-//    public MyContactsAdapter(String name) {
-//        myContactsList.
-//    }
-
     public MyContactsAdapter(Context context, List<MyContacts> myContactsList) {
         super();
         this.context = context;
@@ -41,7 +36,6 @@ public class MyContactsAdapter extends RecyclerView.Adapter<MyContactsAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LogUtil.i("LYCGGG" + ++count);
         if (context != null) {
             context = parent.getContext();
         }
@@ -55,15 +49,6 @@ public class MyContactsAdapter extends RecyclerView.Adapter<MyContactsAdapter.My
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         MyContacts myContacts = myContactsList.get(position);
         holder.textView.setText(myContacts.getUserName());
-        LogUtil.i("LYCGGG" + ++count1);
-
-
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                JumpToModifyContactActivity()
-//            }
-//        });
     }
 
     @Override

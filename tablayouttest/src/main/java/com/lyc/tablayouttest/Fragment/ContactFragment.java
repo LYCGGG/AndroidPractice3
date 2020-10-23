@@ -32,7 +32,6 @@ public class ContactFragment extends Fragment {
     private Context mContext;
     private RecyclerView mRecycleView;
     private FloatingActionButton mBtnAddContact;
-//    private LoadTask loadingTask = new LoadTask();
     private List<MyContacts> myContactsList = new ArrayList<>();
     private MyContactsAdapter myContactsAdapter;
 
@@ -90,42 +89,4 @@ public class ContactFragment extends Fragment {
         }
     }
 
-    // 这个被长期使用的线程处理方式已经被弃用了
-    // TODO：换用其他线程、异步技术
-//    class LoadTask extends AsyncTask<Void,Void,Void> {
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            return null;
-//        }
-//
-//        public LoadTask() {
-//            super();
-//        }
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Void aVoid) {
-//            super.onPostExecute(aVoid);
-//        }
-//
-//        @Override
-//        protected void onProgressUpdate(Void... values) {
-//            super.onProgressUpdate(values);
-//        }
-//
-//        @Override
-//        protected void onCancelled(Void aVoid) {
-//            super.onCancelled(aVoid);
-//        }
-//
-//        @Override
-//        protected void onCancelled() {
-//            super.onCancelled();
-//        }
-//    }
 }
